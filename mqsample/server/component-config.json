@@ -16,7 +16,7 @@
     },
     "topology": {
       "connection": {
-        "uri": "amqp://guest:guest@127.0.0.1:5672/"
+        "uri": "http://guest:guest@localhost:8080"
       },
       "exchanges": [
         {
