@@ -9,6 +9,7 @@
     "mixins": [
       "loopback/common/mixins",
       "loopback/server/mixins",
+      "../node_modules/loopback-component-mq/lib/mixins",
       "../common/mixins",
       "./mixins"
     ]
@@ -34,5 +35,9 @@
   },
   "Note": {
     "dataSource": "db"
+  },
+  "Widget": {
+    "dataSource": null,
+    "public": true
   }
 }

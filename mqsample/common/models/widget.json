@@ -1,0 +1,46 @@
+{
+  "name": "Widget",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {},
+  "mixins": {
+    "MessageQueue": {
+      "producers": {
+        "publishItem": {
+          "exchange": "item.write",
+          "options": {
+            "routingKey": "hi",
+            "type": "company.project.messages.textMessage",
+            "correlationId": "one",
+            "contentType": "application/json",
+            "messageId": "100",
+            "expiresAfter": "1000 // TTL in ms, in this example 1 second",
+            "timestamp": "// posix timestamp (long)",
+            "mandatory": "true, //Must be set to true for onReturned to receive unqueued message",
+            "headers": {
+              "random": "application specific value"
+            },
+            "timeout": "// ms to wait before cancelling the publish and rejecting the promise"
+          }
+        }
+      },
+      "consumers": {
+        "consumeItem": {
+          "queue": "item.write",
+          "type": "created"
+        }
+      }
+    }
+  }
+}
